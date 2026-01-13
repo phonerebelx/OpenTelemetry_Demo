@@ -28,7 +28,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentContainerView
-import com.example.otel_playground.OtelApplication.Companion.tracer
 import com.example.otel_playground.ui.compose_ui.MainOtelButton
 import com.example.otel_playground.ui.theme.OtelplaygroundTheme
 import com.example.otel_playground.xml.XmlButtonFragment
@@ -49,12 +48,6 @@ class MainActivity : FragmentActivity() {
         // This creates a LogRecord using the OpenTelemetry Logs API.
         // It is NOT android-log instrumentation.
         // This is useful for structured domain events (e.g. vehicle state changes).
-        val scope = "otel.demo.app"
-        OtelApplication
-            .eventBuilder(scope, "app.started")
-            .setAttribute("screen", "MainActivity")
-            .setAttribute("lifecycle", "onCreate")
-            .emit()
 
         // FEATURE 5 (AUTOMATIC): SESSIONS
         // The session ID is automatically created and managed by the OTel Android SDK.
@@ -148,10 +141,10 @@ fun DemoScreen(modifier: Modifier = Modifier) {
                 Log.i("OTEL_DEMO", "Compose button clicked")
 
                 // Manual domain event
-                OtelApplication
-                    .eventBuilder("demo.app", "compose_button.clicked")
-                    .setAttribute("screen", "DemoScreen")
-                    .emit()
+//                OtelApplication
+//                    .eventBuilder("demo.app", "compose_button.clicked")
+//                    .setAttribute("screen", "DemoScreen")
+//                    .emit()
             },
             modifier = Modifier.semantics {
                 onClick("ComposeDemoButton") { true }
@@ -207,12 +200,12 @@ fun DemoScreen(modifier: Modifier = Modifier) {
 @Composable
 fun XmlFragmentContainer() {
     val scope = "otel.demo.app.xml.activity.start"
-    val tracer = tracer(scope)
-    val span =
-        tracer
-            ?.spanBuilder("XML fragment connect to compose UI")
-            ?.setSpanKind(SpanKind.INTERNAL)
-            ?.startSpan()
+//    val tracer = tracer(scope)
+//    val span =
+//        tracer
+//            ?.spanBuilder("XML fragment connect to compose UI")
+//            ?.setSpanKind(SpanKind.INTERNAL)
+//            ?.startSpan()
     AndroidView(
         modifier = Modifier
             .fillMaxWidth()
@@ -232,7 +225,7 @@ fun XmlFragmentContainer() {
         }
     )
 
-    span?.end()
+//    span?.end()
 }
 
 @Composable
@@ -266,10 +259,10 @@ fun SessionInfo() {
             Log.i("OTEL_DEMO", "Session info requested")
 
             // Emit session info event
-            OtelApplication
-                .eventBuilder("demo.app", "session_info.requested")
-                .setAttribute("session_id", sessionId)
-                .emit()
+//            OtelApplication
+//                .eventBuilder("demo.app", "session_info.requested")
+//                .setAttribute("session_id", sessionId)
+//                .emit()
         },
         modifier = Modifier.semantics {
             onClick("SessionInfoButton") { true }

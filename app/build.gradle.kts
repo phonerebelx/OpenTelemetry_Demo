@@ -2,13 +2,12 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("net.bytebuddy.byte-buddy-gradle-plugin")
 }
 
 android {
     namespace = "com.example.otel_playground"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.otel_playground"
@@ -58,15 +57,13 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-    api(platform("io.opentelemetry.android:opentelemetry-android-bom:1.0.0-rc.1-alpha"))
-    implementation("io.opentelemetry.android:android-agent")
-    implementation("io.opentelemetry.android.instrumentation:view-click:1.0.0-rc.1-alpha")
-    implementation("io.opentelemetry.android.instrumentation:android-log-library:1.0.0-rc.1-alpha")
 
-    //timber logs
-    implementation("com.jakewharton.timber:timber:5.0.1")
+    api(platform("io.opentelemetry.android:opentelemetry-android-bom:1.0.1-alpha"))
+    implementation("io.opentelemetry.android:android-agent")
+    implementation("io.opentelemetry.android.instrumentation:view-click:1.0.1-alpha")
+    implementation("io.opentelemetry.android.instrumentation:android-log-library:1.0.1-alpha")
+    add("byteBuddy", "io.opentelemetry.android.instrumentation:android-log-agent:1.0.1-alpha")
+
     implementation(libs.opentelemetry.exporter.otlp)
     implementation(libs.opentelemetry.api.incubator)
-
 }
-

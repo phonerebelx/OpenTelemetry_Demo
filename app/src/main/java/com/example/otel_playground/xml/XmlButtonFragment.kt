@@ -22,11 +22,11 @@ class XmlButtonFragment : Fragment(R.layout.fragment_xml_button) {
             Log.i("OTEL_XML", "XML button clicked")
 
             // FEATURE 1 (MANUAL): DOMAIN EVENT
-            OtelApplication
-                .eventBuilder("xml.fragment", "xml_button.clicked")
-                .setAttribute("source", "xml")
-                .setAttribute("screen", "MainActivity")
-                .emit()
+//            OtelApplication
+//                .eventBuilder("xml.fragment", "xml_button.clicked")
+//                .setAttribute("source", "xml")
+//                .setAttribute("screen", "MainActivity")
+//                .emit()
         }
     }
 }
