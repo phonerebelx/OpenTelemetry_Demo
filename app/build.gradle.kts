@@ -63,7 +63,10 @@ dependencies {
     implementation("io.opentelemetry.android.instrumentation:view-click:1.0.1-alpha")
     implementation("io.opentelemetry.android.instrumentation:android-log-library:1.0.1-alpha")
     add("byteBuddy", "io.opentelemetry.android.instrumentation:android-log-agent:1.0.1-alpha")
-
+    implementation("io.opentelemetry.android.instrumentation:httpurlconnection-library:1.0.1-alpha")
+    byteBuddy("io.opentelemetry.android.instrumentation:httpurlconnection-agent:1.0.1-alpha")
+    implementation("io.opentelemetry.android.instrumentation:sessions:1.0.1-alpha")
+    implementation("io.opentelemetry.android.instrumentation:compose-click:1.0.1-alpha")
     implementation(libs.opentelemetry.exporter.otlp)
     implementation(libs.opentelemetry.api.incubator)
 }

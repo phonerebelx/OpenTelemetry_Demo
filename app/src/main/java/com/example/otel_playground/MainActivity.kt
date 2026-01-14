@@ -129,8 +129,8 @@ fun DemoScreen(modifier: Modifier = Modifier) {
         // FEATURE 3 (AUTOMATIC): VIEW-CLICK (XML)
         // Clicks inside traditional Android Views are captured
         // by view-click instrumentation.
-        Text("XML View Click (Fragment)", style = MaterialTheme.typography.titleMedium)
-        XmlFragmentContainer()
+//        Text("XML View Click (Fragment)", style = MaterialTheme.typography.titleMedium)
+//        XmlFragmentContainer()
 
         Divider()
 

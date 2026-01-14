@@ -13,6 +13,7 @@ import io.opentelemetry.api.logs.LogRecordBuilder
 import io.opentelemetry.api.logs.LoggerProvider
 import io.opentelemetry.api.metrics.LongCounter
 import io.opentelemetry.api.trace.Tracer
+import kotlin.time.Duration.Companion.hours
 
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
@@ -39,8 +40,8 @@ class OtelApplication : Application() {
                     }
 
                     session {
-                        backgroundInactivityTimeout = 0.5.minutes
-                        maxLifetime = 1.minutes
+                        backgroundInactivityTimeout = 15.minutes
+                        maxLifetime = 4.hours
                     }
 
                     instrumentations {
